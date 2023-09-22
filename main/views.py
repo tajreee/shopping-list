@@ -15,14 +15,13 @@ from django.contrib.auth.decorators import login_required
 
 from main.models import Product
 
-# Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
 
     context = {
-        'name': request.user.username, # Nama kamu
-        'class': 'PBP A', # Kelas PBP kamu
+        'name': request.user.username,
+        'class': 'PBP F',
         'products': products,
         'last_login': request.COOKIES['last_login'],
     }
